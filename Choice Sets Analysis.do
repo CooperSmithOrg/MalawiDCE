@@ -12,6 +12,7 @@ drop if drop_survey ==1
 tabulate choice_no alt
 
 **Run all variables**
+destring choice, replace
 clogit choice train_ind train_blend train_grp feedsupp_vgrp feedsupp_one feedsupp_grp tech_phone tech_comp recog_supvr recog_conf recog_cert time_5 time_10 time_15, group(obsid)
 
 
