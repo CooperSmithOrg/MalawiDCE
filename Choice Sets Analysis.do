@@ -18,14 +18,18 @@ clogit choice train_ind train_blend train_grp feedsupp_vgrp feedsupp_one feedsup
 **Run all variables based on the characteristics of the individuals**
 
 
-
 **Willingness to pay WTP calculations**
-**STEP 1: Create time variable that 
+**STEP 1: Create time variable that sets time = 5,10,or 15 depending on the package**
 generate int time = 0
 label variable time "Willingness to pay amount of time, 5, 10, or 15 hours per week"
 replace time = 5 if time_5 ==1
 replace time =10 if time_10 ==10
 replace time = 15 if time_15 == 15
+**taking current situation out of the analysis because no way of showing it as a value, so code as missing**
+replace time =. if alt ==3
+**Create a table showing time, alt, and choice_no***
+table time alt, by (choice_no) contents(freq)
+
 
 **STEP 2: Calculate WTP variable**
 **Make sure that you download wtp by searching for "wtp" and scrolling down to "wtp" and downloading it**
